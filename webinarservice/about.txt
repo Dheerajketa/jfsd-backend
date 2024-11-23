@@ -1,0 +1,113 @@
+Here is the list of all the endpoints we have created so far for the Webinar Service:
+
+### Webinar Endpoints
+
+1. **Get All Webinars**
+   - **Method**: GET
+   - **URL**: `/webinars`
+   - **Description**: Retrieves a list of all webinars.
+
+2. **Get Webinar by WebinarId**
+   - **Method**: GET
+   - **URL**: `/webinars/{webinarId}`
+   - **Description**: Retrieves details of a specific webinar by its `webinarId`.
+   - **Path Variable**: `{webinarId}` - The ID of the webinar.
+
+3. **Get Webinars by Instructor Username**
+   - **Method**: GET
+   - **URL**: `/webinars/instructor/{instructorUsername}`
+   - **Description**: Retrieves a list of webinars by the instructor's username.
+   - **Path Variable**: `{instructorUsername}` - The username of the instructor.
+
+4. **Get Scheduled Webinars**
+   - **Method**: GET
+   - **URL**: `/webinars/schedule`
+   - **Description**: Retrieves a list of scheduled (upcoming) webinars.
+
+5. **Get Completed Webinars**
+   - **Method**: GET
+   - **URL**: `/webinars/completed`
+   - **Description**: Retrieves a list of completed webinars.
+
+6. **Get Ongoing Webinars**
+   - **Method**: GET
+   - **URL**: `/webinars/ongoing`
+   - **Description**: Retrieves a list of ongoing webinars.
+
+7. **Get Webinar Video URL**
+   - **Method**: GET
+   - **URL**: `/webinars/{webinarId}/videoUrl`
+   - **Description**: Retrieves the video URL of a specific webinar.
+   - **Path Variable**: `{webinarId}` - The ID of the webinar.
+
+8. **Create a Webinar**
+   - **Method**: POST
+   - **URL**: `/webinars`
+   - **Description**: Creates a new webinar.
+   - **Body**: JSON
+     ```json
+     {
+       "title": "Introduction to Spring Boot",
+       "description": "Learn the basics of Spring Boot for building web apps.",
+       "date": "2024-12-01T10:00:00Z",
+       "category": "Development",
+       "slots": 100,
+       "instructorUsername": "instructor_john",
+       "status": "Upcoming",
+       "resources": [],
+       "videoUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+     }
+     ```
+
+9. **Update a Webinar**
+   - **Method**: PUT
+   - **URL**: `/webinars/{id}`
+   - **Description**: Updates an existing webinar.
+   - **Path Variable**: `{id}` - The ID of the webinar.
+   - **Body**: JSON
+     ```json
+     {
+       "title": "Advanced Spring Boot",
+       "description": "Deep dive into Spring Boot features.",
+       "date": "2024-12-02T10:00:00Z",
+       "category": "Development",
+       "slots": 50,
+       "instructorUsername": "instructor_jane",
+       "status": "Upcoming",
+       "resources": [],
+       "videoUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+     }
+     ```
+
+10. **Start a Webinar**
+    - **Method**: PUT
+    - **URL**: `/webinars/start/{webinarId}`
+    - **Description**: Changes the status of a webinar to "Ongoing".
+    - **Path Variable**: `{webinarId}` - The ID of the webinar.
+
+11. **End a Webinar**
+    - **Method**: PUT
+    - **URL**: `/webinars/end/{webinarId}`
+    - **Description**: Changes the status of a webinar to "Completed".
+    - **Path Variable**: `{webinarId}` - The ID of the webinar.
+
+12. **Delete a Webinar**
+    - **Method**: DELETE
+    - **URL**: `/webinars/{id}`
+    - **Description**: Deletes a webinar.
+    - **Path Variable**: `{id}` - The ID of the webinar.
+
+### Summary
+
+- **Get All Webinars**: `GET /webinars`
+- **Get Webinar by WebinarId**: `GET /webinars/{webinarId}`
+- **Get Webinars by Instructor Username**: `GET /webinars/instructor/{instructorUsername}`
+- **Get Scheduled Webinars**: `GET /webinars/schedule`
+- **Get Completed Webinars**: `GET /webinars/completed`
+- **Get Ongoing Webinars**: `GET /webinars/ongoing`
+- **Get Webinar Video URL**: `GET /webinars/{webinarId}/videoUrl`
+- **Create a Webinar**: `POST /webinars`
+- **Update a Webinar**: `PUT /webinars/{id}`
+- **Start a Webinar**: `PUT /webinars/start/{webinarId}`
+- **End a Webinar**: `PUT /webinars/end/{webinarId}`
+- **Delete a Webinar**: `DELETE /webinars/{id}`

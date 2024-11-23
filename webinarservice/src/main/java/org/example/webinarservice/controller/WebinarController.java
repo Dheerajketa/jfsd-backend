@@ -81,4 +81,15 @@ public class WebinarController {
     public void deleteWebinar(@PathVariable String id) {
         webinarService.deleteWebinar(id);
     }
+
+    @PutMapping("/{webinarId}/decrementSlots")
+    public void decrementSlots(@PathVariable String webinarId) {
+        webinarService.decrementSlots(webinarId);
+    }
+
+    @PutMapping("/{webinarId}/incrementSlots")
+    public void incrementSlots(@PathVariable String webinarId) {
+        webinarService.incrementSlots(webinarId);
+    }
+
 }

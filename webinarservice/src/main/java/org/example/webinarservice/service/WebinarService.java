@@ -2,7 +2,7 @@ package org.example.webinarservice.service;
 
 import org.example.webinarservice.model.Webinar;
 import org.example.webinarservice.repository.WebinarRepository;
-import org.example.webinarservice.util.YouTubeUrlConverter;
+import org.example.webinarservice.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -115,5 +115,31 @@ public class WebinarService {
         return webinarRepository.findAll().stream()
                 .filter(webinar -> "Completed".equals(webinar.getStatus()))
                 .collect(Collectors.toList());
+    }
+
+    public void decrementSlots(String webinarId) {
+        Optional<Webinar> webinarOpt = webinarRepository.findByWebinarId(webinarId);
+        if (webinarOpt.isPresent()) {
+            Webinar webinar = webinarOpt.get();
+            if (webinar.getSlots() > 0) {
+                webinar.setSlots(webinar.getSlots() - 1);
+                webinarRepository.save(webinar);
+            } else {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No slots available");
+            }
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Webinar not found");
+        }
+    }
+
+    public void incrementSlots(String webinarId) {
+        Optional<Webinar> webinarOpt = webinarRepository.findByWebinarId(webinarId);
+        if (webinarOpt.isPresent()) {
+            Webinar webinar = webinarOpt.get();
+            webinar.setSlots(webinar.getSlots() + 1);
+            webinarRepository.save(webinar);
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Webinar not found");
+        }
     }
 }
