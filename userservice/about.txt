@@ -1,0 +1,86 @@
+Here is a list of all the endpoints we have created for the UserController:
+
+User Registration and Login
+
+Register a User
+Method: POST
+URL: /api/users/register
+Description: Registers a new user.
+Body: (raw JSON)
+
+Login a User
+Method: POST
+URL: /api/users/login
+Description: Logs in a user.
+Params:
+username: testuser
+password: password123
+
+User Profile
+Get User Profile by Username
+Method: GET
+URL: /api/users/profile
+Description: Retrieves the profile of a user by username.
+Params:
+username: testuser
+
+Role Management
+
+Request Instructor Role
+Method: POST
+URL: /api/users/role/request
+Description: Requests the instructor role for a user.
+Params:
+username: testuser
+
+Change User Role
+Method: PUT
+URL: /api/users/role/change
+Description: Changes the role of a user.
+Params:
+username: testuser
+newRole: INSTRUCTOR
+
+Account Status Management
+Change User Status
+Method: PUT
+URL: /api/users/status/change
+Description: Changes the status of a user (enabled/disabled).
+Params:
+username: testuser
+enabled: true or false
+
+User Lists
+
+Get All Users
+Method: GET
+URL: /api/users/all
+Description: Retrieves a list of all users.
+
+Get Users Who Applied to Become Instructors
+Method: GET
+URL: /api/users/instructor-requests
+Description: Retrieves a list of users who have applied to become instructors.
+
+Get Instructors
+Method: GET
+URL: /api/users/instructors
+Description: Retrieves a list of all instructors.
+
+Get Regular Users
+Method: GET
+URL: /api/users/regular-users
+
+
+Description: Retrieves a list of all regular users.
+Summary of Endpoints
+POST /api/users/register
+POST /api/users/login
+GET /api/users/profile
+POST /api/users/role/request
+PUT /api/users/role/change
+PUT /api/users/status/change
+GET /api/users/all
+GET /api/users/instructor-requests
+GET /api/users/instructors
+GET /api/users/regular-users
