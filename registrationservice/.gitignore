@@ -31,9 +31,3 @@ build/
 
 ### VS Code ###
 .vscode/
-
-# Ignore chat.txt
-chat.txt
-
-# Ignore about.txt
-about.txt

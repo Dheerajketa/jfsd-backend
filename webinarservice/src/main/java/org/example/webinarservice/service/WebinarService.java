@@ -2,6 +2,7 @@ package org.example.webinarservice.service;
 
 import org.example.webinarservice.model.Webinar;
 import org.example.webinarservice.repository.WebinarRepository;
+import org.example.webinarservice.util.YouTubeUrlConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -45,12 +46,14 @@ public class WebinarService {
     public Webinar createWebinar(Webinar webinar) {
         validateInstructor(webinar.getInstructorUsername());
         webinar.setWebinarId(String.valueOf(sequenceGeneratorService.generateSequence(Webinar.SEQUENCE_NAME)));
+        webinar.setVideoUrl(YouTubeUrlConverter.convertToEmbeddedUrl(webinar.getVideoUrl()));
         return webinarRepository.save(webinar);
     }
 
     public Webinar updateWebinar(String id, Webinar webinar) {
         validateInstructor(webinar.getInstructorUsername());
         webinar.setId(id);
+        webinar.setVideoUrl(YouTubeUrlConverter.convertToEmbeddedUrl(webinar.getVideoUrl()));
         return webinarRepository.save(webinar);
     }
 
