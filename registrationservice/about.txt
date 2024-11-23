@@ -1,0 +1,71 @@
+Sure! Here is the list of all the endpoints we have created so far for the `RegistrationService`:
+
+### Endpoints
+
+1. **Register a User for a Webinar**
+   - **Method:** POST
+   - **URL:** `/api/registrations`
+   - **Query Parameters:**
+     - `username`: The username of the user (e.g., `johndoe`)
+     - `webinarId`: The ID of the webinar (e.g., `12345`)
+   - **Description:** Registers a user for a webinar.
+
+2. **Get All Registrations**
+   - **Method:** GET
+   - **URL:** `/api/registrations`
+   - **Description:** Retrieves a list of all registrations.
+
+3. **Get Registration by Registration ID**
+   - **Method:** GET
+   - **URL:** `/api/registrations/{registrationId}`
+   - **Path Parameters:**
+     - `registrationId`: The ID of the registration (e.g., `1`)
+   - **Description:** Retrieves a registration by its registration ID, including the number of slots remaining for the webinar.
+
+4. **Delete Registration by ID**
+   - **Method:** DELETE
+   - **URL:** `/api/registrations/{id}`
+   - **Path Parameters:**
+     - `id`: The MongoDB ID of the registration (e.g., `60d5f9b5e4b0a5c8b4f8e8b5`)
+   - **Description:** Deletes a registration by its MongoDB ID.
+
+5. **Cancel Registration**
+   - **Method:** POST
+   - **URL:** `/api/registrations/cancel`
+   - **Query Parameters:**
+     - `username`: The username of the user (e.g., `johndoe`)
+     - `webinarId`: The ID of the webinar (e.g., `12345`)
+   - **Description:** Cancels a registration for a user and increments the slots for the webinar.
+
+6. **Get Registrations by Webinar ID**
+   - **Method:** GET
+   - **URL:** `/api/registrations/webinar/{webinarId}`
+   - **Path Parameters:**
+     - `webinarId`: The ID of the webinar (e.g., `12345`)
+   - **Description:** Retrieves a list of all registered users for a specific webinar.
+
+### Example Postman Requests
+
+1. **Register a User for a Webinar**
+   - **Method:** POST
+   - **URL:** `http://localhost:8082/api/registrations?username=johndoe&webinarId=12345`
+
+2. **Get All Registrations**
+   - **Method:** GET
+   - **URL:** `http://localhost:8082/api/registrations`
+
+3. **Get Registration by Registration ID**
+   - **Method:** GET
+   - **URL:** `http://localhost:8082/api/registrations/1`
+
+4. **Delete Registration by ID**
+   - **Method:** DELETE
+   - **URL:** `http://localhost:8082/api/registrations/60d5f9b5e4b0a5c8b4f8e8b5`
+
+5. **Cancel Registration**
+   - **Method:** POST
+   - **URL:** `http://localhost:8082/api/registrations/cancel?username=johndoe&webinarId=12345`
+
+6. **Get Registrations by Webinar ID**
+   - **Method:** GET
+   - **URL:** `http://localhost:8082/api/registrations/webinar/12345`
