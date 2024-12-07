@@ -17,6 +17,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class RegistrationService {
@@ -135,5 +136,26 @@ public class RegistrationService {
 
     public List<Registration> getRegistrationsByWebinarId(String webinarId) {
         return registrationRepository.findByWebinarId(webinarId);
+    }
+
+    public List<Registration> getWebinarsByUsername(String username) {
+        return registrationRepository.findByUsername(username);
+    }
+
+    public List<JsonNode> getCompletedWebinarsByUsername(String username) {
+        List<Registration> registrations = registrationRepository.findByUsername(username);
+        return registrations.stream()
+                .map(registration -> {
+                    ResponseEntity<String> webinarResponse = restTemplate.getForEntity(WEBINAR_SERVICE_URL + registration.getWebinarId(), String.class);
+                    ObjectMapper webinarMapper = new ObjectMapper();
+                    try {
+                        JsonNode webinarRoot = webinarMapper.readTree(webinarResponse.getBody());
+                        return webinarRoot;
+                    } catch (JsonProcessingException e) {
+                        throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error processing JSON response", e);
+                    }
+                })
+                .filter(webinar -> "Completed".equals(webinar.path("status").asText()))
+                .collect(Collectors.toList());
     }
 }

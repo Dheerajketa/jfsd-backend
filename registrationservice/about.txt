@@ -69,3 +69,7 @@ Sure! Here is the list of all the endpoints we have created so far for the `Regi
 6. **Get Registrations by Webinar ID**
    - **Method:** GET
    - **URL:** `http://localhost:8082/api/registrations/webinar/12345`
+
+7. **Get Webinars by Username    
+   - **Method:** GET
+   - **URL:** `http://localhost:8082/api/registrations/user/{username}`

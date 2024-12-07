@@ -3,6 +3,7 @@ package com.example.registrationservice.controller;
 import com.example.registrationservice.model.Registration;
 import com.example.registrationservice.model.RegistrationResponse;
 import com.example.registrationservice.service.RegistrationService;
+import com.fasterxml.jackson.databind.JsonNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,8 +40,19 @@ public class RegistrationController {
     public void cancelRegistration(@RequestParam String username, @RequestParam String webinarId) {
         registrationService.cancelRegistration(username, webinarId);
     }
+
     @GetMapping("/webinar/{webinarId}")
     public List<Registration> getRegistrationsByWebinarId(@PathVariable String webinarId) {
         return registrationService.getRegistrationsByWebinarId(webinarId);
+    }
+
+    @GetMapping("/user/{username}")
+    public List<Registration> getWebinarsByUsername(@PathVariable String username) {
+        return registrationService.getWebinarsByUsername(username);
+    }
+
+    @GetMapping("/user/{username}/completed")
+    public List<JsonNode> getCompletedWebinarsByUsername(@PathVariable String username) {
+        return registrationService.getCompletedWebinarsByUsername(username);
     }
 }
