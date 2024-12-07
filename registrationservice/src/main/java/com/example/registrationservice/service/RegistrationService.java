@@ -31,8 +31,8 @@ public class RegistrationService {
     @Autowired
     private SequenceGeneratorService sequenceGeneratorService;
 
-    private static final String USER_SERVICE_URL = "http://localhost:8080/api/users/profile?username=";
-    private static final String WEBINAR_SERVICE_URL = "http://localhost:8081/webinars/";
+    private static final String USER_SERVICE_URL = "https://userservice.up.railway.app/api/users/profile?username=";
+    private static final String WEBINAR_SERVICE_URL = "https://webinarservice.up.railway.app/webinars/";
 
     public Registration register(String username, String webinarId) {
         try {

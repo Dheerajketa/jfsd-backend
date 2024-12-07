@@ -29,7 +29,7 @@ public class WebinarService {
     @Autowired
     private SequenceGeneratorService sequenceGeneratorService;
 
-    private static final String USER_SERVICE_URL = "http://localhost:8080/api/users/profile?username=";
+    private static final String USER_SERVICE_URL = "https://userservice.up.railway.app/api/users/profile?username=";
 
     public List<Webinar> getAllWebinars() {
         return webinarRepository.findAll();
